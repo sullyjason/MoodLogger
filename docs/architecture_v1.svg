@@ -1,0 +1,68 @@
+<svg width="680" height="440" viewBox="0 0 680 440" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>MoodLogger v1 architecture</title>
+<desc>Block diagram: USB-C feeds a charger and LiPo with protection. The battery powers an always-on RTC and a soft power latch. Buttons switch the latch on and are read by the MCU, which logs to NOR flash and exposes it over USB.</desc>
+<style>
+text{font-family:Helvetica,Arial,sans-serif}
+.th{font-size:14px;font-weight:600}
+.ts{font-size:12px}
+</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="680" height="440" rx="8" fill="#FFFFFF"/>
+<g>
+<rect x="40" y="40" width="150" height="56" rx="4" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text class="th" x="115" y="63" text-anchor="middle" dominant-baseline="central" fill="#444441">USB-C</text>
+<text class="ts" x="115" y="81" text-anchor="middle" dominant-baseline="central" fill="#5F5E5A">charge + data</text>
+</g>
+<g>
+<rect x="240" y="40" width="150" height="56" rx="4" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text class="th" x="315" y="63" text-anchor="middle" dominant-baseline="central" fill="#633806">Charger</text>
+<text class="ts" x="315" y="81" text-anchor="middle" dominant-baseline="central" fill="#854F0B">MCP73831, 50 mA</text>
+</g>
+<g>
+<rect x="440" y="40" width="190" height="56" rx="4" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text class="th" x="535" y="63" text-anchor="middle" dominant-baseline="central" fill="#633806">LiPo + protection</text>
+<text class="ts" x="535" y="81" text-anchor="middle" dominant-baseline="central" fill="#854F0B">over-discharge cutoff</text>
+</g>
+<g>
+<rect x="40" y="170" width="170" height="56" rx="4" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="th" x="125" y="193" text-anchor="middle" dominant-baseline="central" fill="#085041">RTC RV-3028</text>
+<text class="ts" x="125" y="211" text-anchor="middle" dominant-baseline="central" fill="#0F6E56">always on, ~45 nA</text>
+</g>
+<g>
+<rect x="440" y="170" width="190" height="56" rx="4" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text class="th" x="535" y="193" text-anchor="middle" dominant-baseline="central" fill="#633806">Soft power latch</text>
+<text class="ts" x="535" y="211" text-anchor="middle" dominant-baseline="central" fill="#854F0B">~100 nA when off</text>
+</g>
+<g>
+<rect x="40" y="300" width="150" height="64" rx="4" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text class="th" x="115" y="325" text-anchor="middle" dominant-baseline="central" fill="#3C3489">NOR flash</text>
+<text class="ts" x="115" y="344" text-anchor="middle" dominant-baseline="central" fill="#534AB7">FAT + CSV log</text>
+</g>
+<g>
+<rect x="240" y="300" width="190" height="64" rx="4" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text class="th" x="335" y="325" text-anchor="middle" dominant-baseline="central" fill="#3C3489">MCU with native USB</text>
+<text class="ts" x="335" y="344" text-anchor="middle" dominant-baseline="central" fill="#534AB7">RP2040 or ESP32-S3</text>
+</g>
+<g>
+<rect x="470" y="300" width="160" height="64" rx="4" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text class="th" x="550" y="325" text-anchor="middle" dominant-baseline="central" fill="#444441">Buttons ×4</text>
+<text class="ts" x="550" y="344" text-anchor="middle" dominant-baseline="central" fill="#5F5E5A">wake + identify</text>
+</g>
+<line x1="190" y1="68" x2="234" y2="68" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="390" y1="68" x2="434" y2="68" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="535" y1="96" x2="535" y2="164" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M460 96 L460 140 L125 140 L125 164" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M490 226 L490 265 L335 265 L335 294" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="550" y1="300" x2="550" y2="232" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="470" y1="332" x2="436" y2="332" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="240" y1="332" x2="196" y2="332" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M125 226 L125 280 L260 280 L260 294" fill="none" stroke="#888780" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+<rect x="40" y="404" width="12" height="12" rx="2" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text class="ts" x="58" y="410" dominant-baseline="central" fill="#444441">power path</text>
+<rect x="150" y="404" width="12" height="12" rx="2" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="ts" x="168" y="410" dominant-baseline="central" fill="#444441">always on</text>
+<rect x="255" y="404" width="12" height="12" rx="2" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="273" y="410" dominant-baseline="central" fill="#444441">switched logic</text>
+<rect x="390" y="404" width="12" height="12" rx="2" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text class="ts" x="408" y="410" dominant-baseline="central" fill="#444441">interfaces</text>
+</svg>
