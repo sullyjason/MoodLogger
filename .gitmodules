@@ -1,0 +1,3 @@
+[submodule "Reference Projects/Picoclick-C3-Logger"]
+	path = Reference Projects/Picoclick-C3-Logger
+	url = https://github.com/sullyjason/Picoclick-C3-Logger.git
