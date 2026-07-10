@@ -41,7 +41,7 @@ text{font-family:Helvetica,Arial,sans-serif}
 <g>
 <rect x="240" y="300" width="190" height="64" rx="4" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
 <text class="th" x="335" y="325" text-anchor="middle" dominant-baseline="central" fill="#3C3489">MCU with native USB</text>
-<text class="ts" x="335" y="344" text-anchor="middle" dominant-baseline="central" fill="#534AB7">RP2040 or ESP32-S3</text>
+<text class="ts" x="335" y="344" text-anchor="middle" dominant-baseline="central" fill="#534AB7">ATSAMD21G18</text>
 </g>
 <g>
 <rect x="470" y="300" width="160" height="64" rx="4" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
